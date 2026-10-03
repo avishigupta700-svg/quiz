@@ -204,7 +204,8 @@ const SITE = {
   domain: "vyuhstudytracker.in",                  // every quiz link becomes https://<slug>.<domain>
   storeUrl: "https://www.vyuhstudytracker.in/",  // "Study material" button in the header
   whatsapp: "8299789884",                 // country code + number, digits only
-  email: "ca.avishi22@gmail.com"
+  email: "ca.avishi22@gmail.com",
+  quizFeed: "https://script.google.com/macros/s/AKfycbz8NWUP3HXCwW5iIdTd8gsOhpfyTA6ELGCQzF5K-BGb92Z0tBRBN4StZoNY5hfUZpw/exec"
 };
 
 /* =====================================================================
@@ -215,9 +216,9 @@ const SITE = {
    soon:  true shows "Coming soon" and no link
    url:   optional. Overrides the subdomain link if a quiz lives elsewhere.
    ===================================================================== */
-const QUIZZES = [
-  { slug: "scpm-ch1", cat: "scpm", title: "SCPM Chapter 1: Introduction to Strategic Cost Management", tag: "New",
-    blurb: "Test yourself on lean systems and innovation, with the reasoning behind each answer." },
+let QUIZZES = [];
+const FALLBACK_QUIZZES = [
+  // Optional safety net if the sheet is unreachable and nothing is cached. Can stay empty.
 ];
 
 /* =====================================================================
@@ -271,9 +272,51 @@ function tile(q){
 
 /* Filters: chips are built from the subjects actually in use */
 const state={cat:"all",q:""},grid=$("grid"),empty=$("empty");
-[...new Set(QUIZZES.map(q=>q.cat))].forEach(k=>{
-  $("chips").insertAdjacentHTML("beforeend",`<button class="chip" type="button" data-cat="${k}" aria-pressed="false">${CAT[k].label}</button>`);
-});
+
+function buildChips(){
+  const box=$("chips");
+  box.querySelectorAll('[data-cat]:not([data-cat="all"])').forEach(b=>b.remove());
+  [...new Set(QUIZZES.map(q=>q.cat))].filter(k=>CAT[k]).forEach(k=>{
+    box.insertAdjacentHTML("beforeend",`<button class="chip" type="button" data-cat="${esc(k)}" aria-pressed="${state.cat===k}">${CAT[k].label}</button>`);
+  });
+  box.querySelector('[data-cat="all"]').setAttribute("aria-pressed",String(state.cat==="all"));
+}
+
+/* Load quizzes from the Google Sheet (cached copy first for instant display) */
+const CACHE_KEY="vyuh_quizzes_v1";
+function cleanList(list){
+  return (Array.isArray(list)?list:[]).filter(q=>q&&q.slug&&q.title&&CAT[q.cat]);
+}
+function applyQuizzes(list){
+  QUIZZES=cleanList(list);
+  if(state.cat!=="all"&&!QUIZZES.some(q=>q.cat===state.cat))state.cat="all";
+  buildChips();
+  render();
+}
+async function loadQuizzes(){
+  try{
+    const cached=JSON.parse(localStorage.getItem(CACHE_KEY)||"null");
+    if(cached&&cached.length)applyQuizzes(cached);
+  }catch(e){}
+  if(!QUIZZES.length)$("count").textContent="Loading quizzes…";
+  try{
+    const ctrl=new AbortController();
+    const timer=setTimeout(()=>ctrl.abort(),8000);
+    const res=await fetch(SITE.quizFeed,{signal:ctrl.signal});
+    clearTimeout(timer);
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const data=await res.json();
+    const fresh=cleanList(data.quizzes);
+    applyQuizzes(fresh);
+    try{localStorage.setItem(CACHE_KEY,JSON.stringify(fresh))}catch(e){}
+  }catch(err){
+    if(!QUIZZES.length){
+      applyQuizzes(FALLBACK_QUIZZES);
+      if(!QUIZZES.length)$("count").textContent="Could not load quizzes right now. Please refresh in a moment.";
+    }
+  }
+}
+
 function render(){
   const list=QUIZZES.filter(q=>(state.cat==="all"||q.cat===state.cat)&&(!state.q||(q.title+" "+q.blurb+" "+CAT[q.cat].label).toLowerCase().includes(state.q)));
   grid.innerHTML=list.map(tile).join("");
@@ -300,7 +343,7 @@ $("footWa").href=waReady?`https://wa.me/${SITE.whatsapp}`:"#contact";
 if(waReady){$("footWa").target="_blank";$("footWa").rel="noopener"}
 $("footMail").href=`mailto:${SITE.email}`;
 $("year").textContent=new Date().getFullYear();
-render();
+loadQuizzes();
 </script>
 </body>
 </html>
