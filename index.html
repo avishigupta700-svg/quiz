@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>avishi X vyuh | CA Final practice quizzes</title>
+<meta name="description" content="Interactive chapter-wise quizzes for CA Final students, made by CA Avishi Gupta. Pick a quiz and start practising.">
+<meta name="theme-color" content="#1D2350">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231D2350'/%3E%3Cpath d='M9 9l14 14M23 9L9 23' stroke='%23F2A900' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Literata:opsz,wght@7..72,400..600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --indigo:#1D2350; --paper:#ECEEF3; --surface:#F7F8FB; --marigold:#F2A900; --madder:#B23A5B; --teal:#0E6B6B;
+    --text:#232743; --muted:#5B6080; --line:rgba(29,35,80,.16);
+    --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --serif:"Literata",Georgia,"Times New Roman",serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{scroll-behavior:smooth;scroll-padding-top:88px}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  svg{display:block;max-width:100%}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+  .on-dark :focus-visible{outline-color:var(--marigold)}
+  .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--marigold);color:var(--indigo);padding:10px 16px;border-radius:8px;font-weight:700;text-decoration:none}
+  .skip:focus{top:12px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;border:2px solid transparent;font:600 1rem/1.2 var(--sans);text-decoration:none;cursor:pointer;transition:background-color .15s}
+  .btn-primary{background:var(--marigold);color:var(--indigo)}
+  .btn-primary:hover{background:#FFBE2E}
+  .btn-line{border-color:currentColor;background:transparent;color:inherit}
+  .btn-line:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+
+  .site-header{position:sticky;top:0;z-index:20;background:var(--indigo);color:var(--paper)}
+  .bar{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-size:1.5rem;font-weight:800;font-stretch:88%;letter-spacing:-.025em;color:inherit;text-decoration:none}
+  .brand svg{width:18px;height:18px}
+  .nav{display:flex;gap:24px;margin-left:auto}
+  .nav a{color:inherit;text-decoration:none;font-weight:500}
+  .nav a:hover{text-decoration:underline;text-decoration-color:var(--marigold);text-decoration-thickness:2px;text-underline-offset:7px}
+  .store-btn{display:inline-flex;align-items:center;background:var(--marigold);color:var(--indigo);border-radius:999px;padding:10px 20px;font:700 1rem/1 var(--sans);text-decoration:none}
+  .store-btn:hover{background:#FFBE2E}
+
+  .hero{background:var(--indigo);color:var(--paper);overflow:hidden}
+  .hero-in{max-width:1200px;margin:0 auto;padding:40px 24px 88px;display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
+  .hero h1{margin:0 0 22px;font-size:clamp(2.7rem,6.4vw,5.2rem);line-height:.98;font-weight:800;font-stretch:86%;letter-spacing:-.035em;text-wrap:balance}
+  .lede{font-family:var(--serif);font-size:1.15rem;line-height:1.7;color:#D7DAEA;max-width:33rem;margin:0 0 32px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .hero-art{justify-self:center;width:min(100%,420px);aspect-ratio:1}
+  .hero-art svg{width:100%;height:100%;overflow:visible}
+  .ring{transform-box:fill-box;transform-origin:center;transform:rotate(var(--a,0deg))}
+  .hero-art .ring{animation:settle 1.6s cubic-bezier(.16,.8,.24,1) both;animation-delay:calc(var(--i)*80ms)}
+  @keyframes settle{from{transform:rotate(calc(var(--a) - var(--s)*220deg));opacity:0}to{transform:rotate(var(--a));opacity:1}}
+
+  .section{max-width:1200px;margin:0 auto;padding:72px 24px}
+  .section h2{margin:0 0 10px;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.05;font-weight:800;font-stretch:88%;letter-spacing:-.03em;text-wrap:balance}
+  .section-lede{font-family:var(--serif);color:var(--muted);margin:0 0 32px;max-width:38rem}
+
+  .toolbar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:16px 0;border-top:2px solid var(--indigo);border-bottom:1px solid var(--line)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1.5px solid var(--indigo);background:transparent;color:var(--indigo);border-radius:999px;padding:7px 15px;font:600 .95rem/1.2 var(--sans);cursor:pointer}
+  .chip:hover{background:rgba(29,35,80,.08)}
+  .chip[aria-pressed="true"]{background:var(--indigo);color:var(--paper)}
+  .toolbar input{height:42px;width:240px;border:1.5px solid var(--indigo);border-radius:8px;background:var(--surface);color:var(--text);padding:0 12px;font:500 .95rem var(--sans)}
+  .count{margin:16px 0 28px;color:var(--muted);font-size:.95rem}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:44px 28px}
+  .tile{display:flex;flex-direction:column;gap:16px}
+  .cover{position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden}
+  .cover svg{position:absolute;inset:0;width:100%;height:100%}
+  .tag{position:absolute;top:12px;left:12px;background:var(--paper);color:var(--indigo);font:700 .82rem/1 var(--sans);padding:6px 11px;border-radius:999px}
+  .pill{position:absolute;left:12px;bottom:12px;background:var(--cbg);color:var(--cfg);font:600 .82rem/1 var(--sans);padding:6px 11px;border-radius:999px}
+  .tile-main{display:flex;flex-direction:column;gap:10px;flex:1}
+  .tile h3{margin:0;font-size:1.28rem;line-height:1.15;font-weight:700;font-stretch:92%;letter-spacing:-.02em}
+  .desc{font-family:var(--serif);font-size:.98rem;line-height:1.6;color:var(--muted);margin:0}
+  .tile-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+  .host{margin:0;font-size:.92rem;font-weight:500;color:var(--indigo);overflow-wrap:anywhere}
+  .go{flex:none;display:inline-flex;align-items:center;border:2px solid var(--indigo);background:var(--indigo);color:var(--paper);border-radius:999px;padding:8px 20px;font:600 .95rem/1.2 var(--sans);text-decoration:none;transition:background-color .15s}
+  .go:hover{background:#2A3170}
+  .go[aria-disabled="true"]{background:transparent;color:var(--muted);border-color:var(--line);pointer-events:none}
+  .tile.soon .cover{opacity:.72}
+
+  .empty{padding:32px 0 8px}
+  .empty p{margin:0 0 6px;font-size:1.2rem;font-weight:600}
+  .empty .sub{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--muted);margin-bottom:20px}
+  .empty .btn-line{color:var(--indigo)}
+
+  .site-footer{background:var(--indigo);color:var(--paper)}
+  .foot-in{max-width:1200px;margin:0 auto;padding:64px 24px 28px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+  .site-footer h2{margin:0 0 12px;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.05;font-weight:800;font-stretch:88%;letter-spacing:-.03em}
+  .foot-copy{font-family:var(--serif);color:#D7DAEA;max-width:30rem;margin:0 0 24px;line-height:1.7}
+  .foot-side{justify-self:end;text-align:right}
+  .foot-side .brand{font-size:1.3rem}
+  .foot-side small{display:block;margin-top:10px;color:#B9BED6}
+  .legal{max-width:1200px;margin:0 auto;padding:0 24px 36px;color:#B9BED6;font-size:.9rem}
+
+  @media (max-width:860px){
+    .hero-in{grid-template-columns:1fr;padding-bottom:72px}
+    .hero-art{width:min(70%,320px);order:2}
+    .foot-in{grid-template-columns:1fr;gap:24px}
+    .foot-side{justify-self:start;text-align:left}
+  }
+  @media (max-width:640px){
+    .bar{padding:12px 20px;gap:12px 16px}
+    .nav{order:3;width:100%;margin-left:0;gap:20px;overflow-x:auto}
+    .store-btn{margin-left:auto}
+    .section{padding:56px 20px}
+    .toolbar input{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .hero-art .ring{animation:none}
+    .btn,.go{transition:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#quizzes">Skip to the quizzes</a>
+
+<header class="site-header on-dark">
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="avishi X vyuh, back to top">
+      <span>avishi</span>
+      <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 3l14 14M17 3L3 17" stroke="#F2A900" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg>
+      <span>vyuh</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#quizzes">Quizzes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="store-btn" id="headStore" href="#" target="_blank" rel="noopener">Study material</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero on-dark">
+    <div class="hero-in">
+      <div>
+        <h1>Practise one chapter at a time.</h1>
+        <p class="lede">Short interactive quizzes for CA Final, with every answer explained. Pick a chapter and start. Each quiz opens on its own page.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#quizzes">Browse quizzes</a>
+        </div>
+      </div>
+      <div class="hero-art"><svg id="heroArt" viewBox="-210 -210 420 420" aria-hidden="true" focusable="false"></svg></div>
+    </div>
+  </section>
+
+  <section class="section" id="quizzes">
+    <h2>All quizzes</h2>
+    <p class="section-lede">New quizzes are added here as they are published.</p>
+
+    <div class="toolbar">
+      <div class="chips" id="chips">
+        <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
+      </div>
+      <div>
+        <label class="sr-only" for="q">Search quizzes</label>
+        <input id="q" type="search" placeholder="Search quizzes" autocomplete="off">
+      </div>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <p id="emptyMsg"></p>
+      <p class="sub">Try a different word, or show every quiz again.</p>
+      <button class="btn btn-line" id="clearFilters" type="button">Clear search and filters</button>
+    </div>
+    <noscript><p>The quiz list needs JavaScript to display.</p></noscript>
+  </section>
+</main>
+
+<footer class="site-footer on-dark" id="contact">
+  <div class="foot-in">
+    <div>
+      <h2>Found a mistake, or want a quiz on a topic?</h2>
+      <p class="foot-copy">Tell me which chapter you want next, or which answer looks wrong, and I'll look into it.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" id="footWa" href="#contact">Message on WhatsApp</a>
+        <a class="btn btn-line" id="footMail" href="#contact">Send an email</a>
+      </div>
+    </div>
+    <div class="foot-side">
+      <a class="brand" href="#top" aria-label="avishi X vyuh, back to top">
+        <span>avishi</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 3l14 14M17 3L3 17" stroke="#F2A900" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg>
+        <span>vyuh</span>
+      </a>
+      <small>Quizzes by CA Avishi Gupta</small>
+    </div>
+  </div>
+  <p class="legal">&copy; <span id="year"></span> avishi X vyuh. All rights reserved.</p>
+</footer>
+
+<script>
+/* =====================================================================
+   SETTINGS: edit these first
+   ===================================================================== */
+const SITE = {
+  domain: "fintapedu.com",                  // every quiz link becomes https://<slug>.<domain>
+  storeUrl: "https://www.vyuhstudytracker.in/",  // "Study material" button in the header
+  whatsapp: "8299789884",                 // country code + number, digits only
+  email: "ca.avishi22@gmail.com"
+};
+
+/* =====================================================================
+   QUIZZES: add one entry per quiz.
+   slug:  the subdomain. slug "scpm-ch1" opens https://scpm-ch1.fintapedu.com
+   cat:   scpm | ibs | law | fr   (add more under CAT below)
+   tag:   optional badge on the cover, e.g. "New"
+   soon:  true shows "Coming soon" and no link
+   url:   optional. Overrides the subdomain link if a quiz lives elsewhere.
+   ===================================================================== */
+const QUIZZES = [
+  { slug: "scpm-ch3", cat: "scpm", title: "SCPM Chapter 3: Lean System and Innovation", tag: "New",
+    blurb: "Test yourself on lean systems and innovation, with the reasoning behind each answer." },
+  { slug: "scpm-ch1", cat: "scpm", title: "SCPM Chapter 1",
+    blurb: "Chapter 1 practice questions with answers explained as you go." },
+  { slug: "fr-case", cat: "fr", title: "Financial Reporting Case Scenario Quiz",
+    blurb: "ICAI-style case scenarios: read the facts, pick your answer, then see where the marks come from." },
+  { slug: "law-ch1", cat: "law", title: "Companies Act 2013: Directors", soon: true,
+    blurb: "Appointment and qualifications of directors, Sections 149 to 172." },
+  { slug: "ibs-cases", cat: "ibs", title: "IBS Case Study Quiz", soon: true,
+    blurb: "Questions built from the ICAI case study digest, linking concepts across subjects." }
+];
+
+/* =====================================================================
+   Nothing below needs editing for a basic launch.
+   ===================================================================== */
+const CAT = {
+  scpm: { label: "SCPM",              bg: "#1D2350", ring: "#F2A900", fg: "#ECEEF3" },
+  ibs:  { label: "IBS",               bg: "#B23A5B", ring: "#F9DCE4", fg: "#FFFFFF" },
+  law:  { label: "Corporate law",     bg: "#0E6B6B", ring: "#BFECE4", fg: "#FFFFFF" },
+  fr:   { label: "Financial reporting", bg: "#F2A900", ring: "#1D2350", fg: "#1D2350" }
+};
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const $ = id => document.getElementById(id);
+const hostOf = q => `${q.slug}.${SITE.domain}`;
+const linkOf = q => q.url || `https://${hostOf(q)}`;
+
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function ring({cx=0,cy=0,r,sw,color,op=1,rand,i}){
+  const C=2*Math.PI*r,gap=.07+rand()*.09,angle=Math.floor(rand()*360);
+  return `<circle class="ring" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-opacity="${op}" stroke-width="${sw}" stroke-dasharray="${(C*(1-gap)).toFixed(1)} ${(C*gap).toFixed(1)}" style="--a:${angle}deg;--i:${i};--s:${i%2?1:-1}"/>`;
+}
+(function(){
+  const rand=mulberry32(7);let out="";
+  for(let i=0,r=48;r<=192;r+=18,i++){const pale=i%3===2;out+=ring({r,sw:9,color:pale?"#ECEEF3":"#F2A900",op:pale?.85:1,rand,i})}
+  out+='<path d="M-24 -24L24 24M24 -24L-24 24" stroke="#F2A900" stroke-width="11" stroke-linecap="round" fill="none"/>';
+  $("heroArt").innerHTML=out;
+})();
+function cover(q){
+  const c=CAT[q.cat],rand=mulberry32(hash(q.slug));
+  const cx=Math.round(20+rand()*160),cy=Math.round(15+rand()*120);let s="";
+  for(let i=0,r=14;r<=200;r+=13,i++)s+=ring({cx,cy,r,sw:5,color:c.ring,op:i%2?.5:1,rand,i});
+  return `<svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">${s}</svg>`;
+}
+function tile(q){
+  const c=CAT[q.cat],tag=q.soon?"Coming soon":q.tag;
+  const action=q.soon
+    ? `<span class="go" aria-disabled="true">Soon</span>`
+    : `<a class="go" href="${esc(linkOf(q))}" aria-label="Start ${esc(q.title)}">Start quiz</a>`;
+  return `<article class="tile${q.soon?" soon":""}">
+    <div class="cover" style="--cbg:${c.bg};--cfg:${c.fg};background:${c.bg}">
+      ${cover(q)}${tag?`<span class="tag">${esc(tag)}</span>`:""}<span class="pill">${c.label}</span>
+    </div>
+    <div class="tile-main">
+      <h3>${esc(q.title)}</h3>
+      <p class="desc">${esc(q.blurb)}</p>
+      <div class="tile-foot"><p class="host">${esc(q.url?new URL(q.url).host:hostOf(q))}</p>${action}</div>
+    </div>
+  </article>`;
+}
+
+/* Filters: chips are built from the subjects actually in use */
+const state={cat:"all",q:""},grid=$("grid"),empty=$("empty");
+[...new Set(QUIZZES.map(q=>q.cat))].forEach(k=>{
+  $("chips").insertAdjacentHTML("beforeend",`<button class="chip" type="button" data-cat="${k}" aria-pressed="false">${CAT[k].label}</button>`);
+});
+function render(){
+  const list=QUIZZES.filter(q=>(state.cat==="all"||q.cat===state.cat)&&(!state.q||(q.title+" "+q.blurb+" "+CAT[q.cat].label).toLowerCase().includes(state.q)));
+  grid.innerHTML=list.map(tile).join("");
+  grid.hidden=!list.length;empty.hidden=!!list.length;
+  $("count").textContent=`Showing ${list.length} of ${QUIZZES.length} quizzes`;
+  if(!list.length)$("emptyMsg").textContent=state.q?`Nothing matches "${state.q}".`:"No quizzes in this subject yet.";
+}
+$("chips").addEventListener("click",e=>{
+  const b=e.target.closest("[data-cat]");if(!b)return;
+  state.cat=b.dataset.cat;
+  $("chips").querySelectorAll("[data-cat]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+  render();
+});
+$("q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render()});
+$("clearFilters").addEventListener("click",()=>{
+  state.cat="all";state.q="";$("q").value="";
+  $("chips").querySelectorAll("[data-cat]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.cat==="all")));
+  render();
+});
+
+$("headStore").href=SITE.storeUrl;
+const waReady=/^\d{8,15}$/.test(SITE.whatsapp);
+$("footWa").href=waReady?`https://wa.me/${SITE.whatsapp}`:"#contact";
+if(waReady){$("footWa").target="_blank";$("footWa").rel="noopener"}
+$("footMail").href=`mailto:${SITE.email}`;
+$("year").textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
