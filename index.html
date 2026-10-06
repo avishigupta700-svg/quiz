@@ -183,6 +183,7 @@
       <div class="hero-actions">
         <a class="btn btn-primary" id="footWa" href="#contact">Message on WhatsApp</a>
         <a class="btn btn-line" id="footMail" href="#contact">Send an email</a>
+        <a class="btn btn-line" id="footDonate" href="donate.html">Donate & Support</a>
       </div>
     </div>
     <div class="foot-side">
@@ -204,6 +205,7 @@
 const SITE = {
   domain: "vyuhstudytracker.in",                  // every quiz link becomes https://<slug>.<domain>
   storeUrl: "https://www.vyuhstudytracker.in/",  // "Study material" button in the header
+  donateUrl: "donate.html",   // or a full URL, e.g. "https://www.vyuhstudytracker.in/donate"
   whatsapp: "8299789884",                 // country code + number, digits only
   email: "ca.avishi22@gmail.com",
   quizFeed: "https://script.google.com/macros/s/AKfycbz8NWUP3HXCwW5iIdTd8gsOhpfyTA6ELGCQzF5K-BGb92Z0tBRBN4StZoNY5hfUZpw/exec"
@@ -344,6 +346,7 @@ const waReady=/^\d{8,15}$/.test(SITE.whatsapp);
 $("footWa").href=waReady?`https://wa.me/${SITE.whatsapp}`:"#contact";
 if(waReady){$("footWa").target="_blank";$("footWa").rel="noopener"}
 $("footMail").href=`mailto:${SITE.email}`;
+$("footDonate").href=SITE.donateUrl;
 $("year").textContent=new Date().getFullYear();
 loadQuizzes();
 </script>
