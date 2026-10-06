@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support the quizzes | avishi X vyuh</title>
+<meta name="description" content="The quizzes are free. If they helped your CA Final revision, you can support them with a UPI contribution.">
+<meta name="theme-color" content="#1D2350">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231D2350'/%3E%3Cpath d='M9 9l14 14M23 9L9 23' stroke='%23F2A900' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Literata:opsz,wght@7..72,400..600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --indigo:#1D2350; --paper:#ECEEF3; --surface:#F7F8FB; --marigold:#F2A900; --madder:#B23A5B; --teal:#0E6B6B;
+    --text:#232743; --muted:#5B6080; --line:rgba(29,35,80,.16);
+    --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --serif:"Literata",Georgia,"Times New Roman",serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  svg{display:block;max-width:100%}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+  .on-dark :focus-visible{outline-color:var(--marigold)}
+  .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--marigold);color:var(--indigo);padding:10px 16px;border-radius:8px;font-weight:700;text-decoration:none}
+  .skip:focus{top:12px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;border:2px solid transparent;font:600 1rem/1.2 var(--sans);text-decoration:none;cursor:pointer;transition:background-color .15s}
+  .btn-primary{background:var(--marigold);color:var(--indigo)}
+  .btn-primary:hover{background:#FFBE2E}
+  .btn-line{border-color:currentColor;background:transparent;color:inherit}
+  .btn-line:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+
+  /* header (same as the quiz home page) */
+  .site-header{position:sticky;top:0;z-index:20;background:var(--indigo);color:var(--paper)}
+  .bar{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-size:1.5rem;font-weight:800;font-stretch:88%;letter-spacing:-.025em;color:inherit;text-decoration:none}
+  .brand svg{width:18px;height:18px}
+  .nav{display:flex;gap:24px;margin-left:auto}
+  .nav a{color:inherit;text-decoration:none;font-weight:500}
+  .nav a:hover{text-decoration:underline;text-decoration-color:var(--marigold);text-decoration-thickness:2px;text-underline-offset:7px}
+  .store-btn{display:inline-flex;align-items:center;background:var(--marigold);color:var(--indigo);border-radius:999px;padding:10px 20px;font:700 1rem/1 var(--sans);text-decoration:none}
+  .store-btn:hover{background:#FFBE2E}
+
+  /* hero */
+  .hero{background:var(--indigo);color:var(--paper);overflow:hidden}
+  .hero-in{max-width:1200px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+  .hero h1{margin:0 0 22px;font-size:clamp(2.5rem,5.8vw,4.6rem);line-height:.98;font-weight:800;font-stretch:86%;letter-spacing:-.035em;text-wrap:balance}
+  .lede{font-family:var(--serif);font-size:1.15rem;line-height:1.7;color:#D7DAEA;max-width:33rem;margin:0}
+  .hero-art{justify-self:center;width:min(100%,320px);aspect-ratio:1}
+  .hero-art svg{width:100%;height:100%;overflow:visible}
+  .ring{transform-box:fill-box;transform-origin:center;transform:rotate(var(--a,0deg))}
+  .hero-art .ring{animation:settle 1.6s cubic-bezier(.16,.8,.24,1) both;animation-delay:calc(var(--i)*80ms)}
+  @keyframes settle{from{transform:rotate(calc(var(--a) - var(--s)*220deg));opacity:0}to{transform:rotate(var(--a));opacity:1}}
+
+  /* donate section */
+  .section{max-width:1200px;margin:0 auto;padding:64px 24px 72px}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+  .section h2{margin:0 0 10px;font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1.05;font-weight:800;font-stretch:88%;letter-spacing:-.03em;text-wrap:balance}
+  .about p{font-family:var(--serif);color:var(--muted);margin:0 0 14px;max-width:34rem;line-height:1.7}
+  .about strong{color:var(--text);font-weight:600}
+
+  .card{background:var(--surface);border:1.5px solid var(--indigo);border-radius:12px;padding:28px 26px 30px}
+  .card h3{margin:0 0 14px;font-size:1.28rem;line-height:1.15;font-weight:700;font-stretch:92%;letter-spacing:-.02em}
+  fieldset{border:0;margin:0;padding:0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{position:relative}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .chip span{display:block;border:1.5px solid var(--indigo);background:transparent;color:var(--indigo);border-radius:999px;padding:8px 18px;font:600 .98rem/1.2 var(--sans);cursor:pointer;transition:background-color .15s}
+  .chip span:hover{background:rgba(29,35,80,.08)}
+  .chip input:checked + span{background:var(--indigo);color:var(--paper)}
+  .chip input:focus-visible + span{outline:3px solid var(--indigo);outline-offset:3px}
+
+  .custom{margin-top:14px;display:flex;align-items:center;gap:10px;height:46px;border:1.5px solid var(--indigo);border-radius:8px;background:var(--paper);padding:0 14px}
+  .custom:focus-within{outline:3px solid var(--indigo);outline-offset:3px}
+  .custom label{color:var(--muted);font-size:.95rem;white-space:nowrap}
+  .custom input{flex:1;min-width:0;background:transparent;border:0;color:var(--text);font:500 1rem var(--sans);outline:none}
+  .custom input::placeholder{color:#8a8fab}
+
+  .pay{display:none;width:100%;margin-top:20px;padding:14px 22px;font-size:1.05rem}
+  .pay[aria-disabled="true"]{opacity:.45;pointer-events:none}
+  .touch .pay{display:inline-flex}
+
+  /* QR */
+  .qr-block{margin-top:24px}
+  .touch .qr-block{margin-top:18px}
+  .qr-frame{background:#fff;border:3px solid var(--indigo);border-radius:8px;padding:14px;width:min(250px,100%);margin:0 auto}
+  .qr-frame svg{width:100%;height:auto}
+  .qr-note{text-align:center;color:var(--muted);font-size:.95rem;margin:12px 0 0}
+  .qr-fallback{color:var(--text);font-size:.95rem;text-align:center;padding:30px 0}
+  details.qr-block summary{cursor:pointer;color:var(--indigo);font-weight:600;text-align:center;text-decoration:underline;text-decoration-color:var(--marigold);text-decoration-thickness:2px;text-underline-offset:6px}
+  details.qr-block[open] summary{margin-bottom:16px}
+
+  .upi-row{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .upi-row small{display:block;color:var(--muted);font-size:.9rem}
+  .upi-id{font-weight:700;color:var(--indigo);overflow-wrap:anywhere}
+  .copy{flex:none;color:var(--indigo);padding:9px 18px}
+
+  .status{min-height:1.5em;margin:14px 0 0;color:var(--teal);font-size:.95rem;font-weight:500}
+  .setup{display:none;margin-top:16px;padding:12px 14px;border:1.5px dashed var(--madder);border-radius:8px;color:var(--madder);font-size:.92rem;font-weight:500}
+
+  /* footer (same as the quiz home page) */
+  .site-footer{background:var(--indigo);color:var(--paper)}
+  .foot-in{max-width:1200px;margin:0 auto;padding:48px 24px 20px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .foot-in .brand{font-size:1.3rem}
+  .foot-in small{display:block;margin-top:10px;color:#B9BED6}
+  .foot-links{display:flex;gap:12px;flex-wrap:wrap}
+  .legal{max-width:1200px;margin:0 auto;padding:0 24px 36px;color:#B9BED6;font-size:.9rem}
+
+  @media (max-width:860px){
+    .hero-in{grid-template-columns:1fr;padding-bottom:64px}
+    .hero-art{width:min(55%,240px);order:2}
+    .layout{grid-template-columns:1fr;gap:36px}
+  }
+  @media (max-width:640px){
+    .bar{padding:12px 20px;gap:12px 16px}
+    .nav{order:3;width:100%;margin-left:0;gap:20px;overflow-x:auto}
+    .store-btn{margin-left:auto}
+    .section{padding:48px 20px 56px}
+    .card{padding:24px 20px 26px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .hero-art .ring{animation:none}
+    .btn,.chip span{transition:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#donate">Skip to the donation options</a>
+
+<header class="site-header on-dark">
+  <div class="bar">
+    <a class="brand" href="/" aria-label="avishi X vyuh, back to the quizzes">
+      <span>avishi</span>
+      <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 3l14 14M17 3L3 17" stroke="#F2A900" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg>
+      <span>vyuh</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#quizzes">Quizzes</a>
+      <a href="/#contact">Contact</a>
+      <a href="https://scpm-notes.vyuhstudytracker.in" target="_blank" rel="noopener noreferrer">Notes</a>
+    </nav>
+    <a class="store-btn" id="headStore" href="#" target="_blank" rel="noopener">Study material</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero on-dark">
+    <div class="hero-in">
+      <div>
+        <h1>Help keep the quizzes free.</h1>
+        <p class="lede">Every quiz here is free to attempt. If they have helped your CA Final revision, you can support the portal with a UPI contribution of any amount.</p>
+      </div>
+      <div class="hero-art"><svg id="heroArt" viewBox="-210 -210 420 420" aria-hidden="true" focusable="false"></svg></div>
+    </div>
+  </section>
+
+  <section class="section" id="donate">
+    <div class="layout">
+      <div class="about">
+        <h2>Where your contribution goes</h2>
+        <p>It goes toward building new quizzes and question banks, and keeping the portal running.</p>
+        <p><strong>It is entirely optional.</strong> Your access to the quizzes and the leaderboard stays the same whether you contribute or not.</p>
+        <p>Thank you for being part of this.</p>
+      </div>
+
+      <div class="card">
+        <h3 id="amt-h">Choose an amount</h3>
+
+        <fieldset aria-labelledby="amt-h">
+          <div class="chips" id="chips"></div>
+        </fieldset>
+
+        <div class="custom">
+          <label for="custom">Other amount &#8377;</label>
+          <input id="custom" type="text" inputmode="numeric" autocomplete="off" placeholder="Enter amount" maxlength="6">
+        </div>
+
+        <a class="btn btn-primary pay" id="pay" href="#" role="button">Pay with a UPI app</a>
+
+        <div class="qr-block" id="qrWrap">
+          <div class="qr-frame" id="qr" aria-label="UPI QR code"></div>
+          <p class="qr-note">Scan with any UPI app: GPay, PhonePe, Paytm, BHIM</p>
+        </div>
+
+        <div class="upi-row">
+          <div>
+            <small>UPI ID</small>
+            <span class="upi-id" id="upiId"></span>
+          </div>
+          <button class="btn btn-line copy" id="copy" type="button">Copy</button>
+        </div>
+
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <div class="setup" id="setup">Set your real UPI ID in the CONFIG block at the bottom of this file before publishing.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-dark">
+  <div class="foot-in">
+    <div>
+      <a class="brand" href="/" aria-label="avishi X vyuh, back to the quizzes">
+        <span>avishi</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 3l14 14M17 3L3 17" stroke="#F2A900" stroke-width="3.2" stroke-linecap="round" fill="none"/></svg>
+        <span>vyuh</span>
+      </a>
+      <small>Quizzes by CA Avishi Gupta</small>
+    </div>
+    <div class="foot-links">
+      <a class="btn btn-primary" href="/#quizzes">Back to quizzes</a>
+    </div>
+  </div>
+  <p class="legal">&copy; <span id="year"></span> avishi X vyuh. All rights reserved.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+  /* ================= CONFIG: edit these ================= */
+  const CONFIG = {
+    upiId: "8299789884@ptsbi",            // your UPI ID (VPA)
+    payeeName: "CA Avishi Gupta",     // name shown in the donor's UPI app
+    note: "Support avishi X vyuh your ultimate study portal for Chartered Accountancy", // transaction note
+    amounts: [51, 101, 251, 501],     // quick-pick amounts in rupees
+    defaultAmount: 101,
+    storeUrl: "https://www.vyuhstudytracker.in/"  // "Study material" button in the header
+  };
+  /* ====================================================== */
+
+  const $ = (id) => document.getElementById(id);
+  const MAX = 100000; // UPI per-transaction cap for most apps
+  let amount = CONFIG.defaultAmount;
+
+  if (matchMedia("(pointer: coarse)").matches) document.documentElement.classList.add("touch");
+
+  /* hero rings: same motif as the quiz home page */
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function ring(r,sw,color,op,rand,i){
+    const C=2*Math.PI*r,gap=.07+rand()*.09,angle=Math.floor(rand()*360);
+    return '<circle class="ring" cx="0" cy="0" r="'+r+'" fill="none" stroke="'+color+'" stroke-opacity="'+op+'" stroke-width="'+sw+'" stroke-dasharray="'+(C*(1-gap)).toFixed(1)+' '+(C*gap).toFixed(1)+'" style="--a:'+angle+'deg;--i:'+i+';--s:'+(i%2?1:-1)+'"/>';
+  }
+  (function(){
+    const rand=mulberry32(7);let out="";
+    for(let i=0,r=48;r<=192;r+=18,i++){const pale=i%3===2;out+=ring(r,9,pale?"#ECEEF3":"#F2A900",pale?.85:1,rand,i)}
+    out+='<path d="M-24 -24L24 24M24 -24L-24 24" stroke="#F2A900" stroke-width="11" stroke-linecap="round" fill="none"/>';
+    $("heroArt").innerHTML=out;
+  })();
+
+  function upiLink(amt) {
+    const q = [
+      "pa=" + encodeURIComponent(CONFIG.upiId).replace(/%40/g, "@"),
+      "pn=" + encodeURIComponent(CONFIG.payeeName),
+      amt ? "am=" + amt.toFixed(2) : null,
+      "cu=INR",
+      "tn=" + encodeURIComponent(CONFIG.note)
+    ].filter(Boolean).join("&");
+    return "upi://pay?" + q;
+  }
+
+  function qrSvg(text) {
+    const qr = qrcode(0, "M");
+    qr.addData(text);
+    qr.make();
+    const n = qr.getModuleCount(), pad = 2;
+    let d = "";
+    for (let r = 0; r < n; r++)
+      for (let c = 0; c < n; c++)
+        if (qr.isDark(r, c)) d += "M" + (c + pad) + " " + (r + pad) + "h1v1h-1z";
+    const s = n + pad * 2;
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + s + " " + s +
+      '" shape-rendering="crispEdges" role="img"><path d="' + d + '" fill="#1D2350"/></svg>';
+  }
+
+  function render() {
+    const valid = Number.isFinite(amount) && amount >= 1 && amount <= MAX;
+    const link = upiLink(valid ? amount : null);
+
+    const pay = $("pay");
+    pay.href = link;
+    pay.textContent = valid ? "Pay \u20B9" + amount.toLocaleString("en-IN") + " with a UPI app" : "Pay with a UPI app";
+    pay.setAttribute("aria-disabled", valid ? "false" : "true");
+
+    try {
+      $("qr").innerHTML = qrSvg(link);
+    } catch (e) {
+      $("qr").innerHTML = '<div class="qr-fallback">QR could not load.<br>Use the UPI ID below.</div>';
+    }
+  }
+
+  // quick-pick chips
+  const chips = $("chips");
+  CONFIG.amounts.forEach((a) => {
+    const l = document.createElement("label");
+    l.className = "chip";
+    l.innerHTML = '<input type="radio" name="amt" value="' + a + '"><span>\u20B9' + a.toLocaleString("en-IN") + "</span>";
+    const input = l.querySelector("input");
+    input.checked = a === CONFIG.defaultAmount;
+    input.addEventListener("change", () => {
+      amount = a;
+      $("custom").value = "";
+      $("status").textContent = "";
+      render();
+    });
+    chips.appendChild(l);
+  });
+
+  // custom amount
+  $("custom").addEventListener("input", (e) => {
+    const digits = e.target.value.replace(/\D/g, "");
+    e.target.value = digits;
+    document.querySelectorAll('input[name="amt"]').forEach((i) => (i.checked = false));
+    amount = digits ? parseInt(digits, 10) : NaN;
+    $("status").textContent = amount > MAX ? "UPI apps usually allow up to \u20B91,00,000 per payment." : "";
+    render();
+  });
+
+  // pay click feedback
+  $("pay").addEventListener("click", () => {
+    $("status").textContent = "Opening your UPI app. If nothing opens, scan the QR code or use the UPI ID instead.";
+  });
+
+  // copy UPI ID
+  $("upiId").textContent = CONFIG.upiId;
+  $("copy").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(CONFIG.upiId);
+    } catch (e) {
+      const t = document.createElement("textarea");
+      t.value = CONFIG.upiId; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (_) {}
+      t.remove();
+    }
+    $("copy").textContent = "Copied";
+    setTimeout(() => ($("copy").textContent = "Copy"), 1800);
+  });
+
+  // on phones, tuck the QR behind a toggle (the button is the main action)
+  if (document.documentElement.classList.contains("touch")) {
+    const wrap = $("qrWrap");
+    const d = document.createElement("details");
+    d.className = "qr-block";
+    d.innerHTML = "<summary>Show QR code instead</summary>";
+    while (wrap.firstChild) d.appendChild(wrap.firstChild);
+    wrap.replaceWith(d);
+  }
+
+  $("headStore").href = CONFIG.storeUrl;
+  $("year").textContent = new Date().getFullYear();
+  if (/yourname@/i.test(CONFIG.upiId)) $("setup").style.display = "block";
+  render();
+</script>
+</body>
+</html>
